@@ -1,4 +1,10 @@
 <?php
+/*Potential Login
+require_once('Auth.php');
+if(!isLogged()){
+    header('location: index.php');
+    die();
+}*/
 ?>
 
 <html>
@@ -16,6 +22,7 @@
             <label>Upload Image</label>
             <input type="file" name="img" />
             <button type="submit">Submit</button>
+            <button type="reset">Reset Form</button>
         </form>
     </body>
 </html>
