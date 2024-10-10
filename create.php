@@ -5,6 +5,26 @@ if(!isLogged()){
     header('location: index.php');
     die();
 }*/
+if(count($_POST)>0){
+    $filename=uniqid().'.'.pathinfo($_FILES['img']['name'])['extension'];
+    //Move from temp folder to the Logos folder
+    move_uploaded_file($_FILES['img']['tmp_name'],__DIR__.'/Logos/'.$filename);
+    //Store in db
+    $charity=[
+        'name'=>$_POST['name'],
+        'goal'=>$_POST['goal'],
+        'donationGoal'=>$_POST['donationGoal'],
+        'img'=>$filename,
+    ];
+    $charities=json_decode(file_get_contents('organizations.json.php'),true);
+    $charities[]=$charity;
+    file_put_contents('organizations.json.php', json_encode($charities));
+    
+    //test that the creation of the charity works
+    echo '<pre>';
+    print_r($charities);
+    echo '</pre>';
+}
 ?>
 
 <html>
@@ -14,13 +34,14 @@ if(!isLogged()){
     <body>
         <form method="POST" enctype="multipart/form-data">
             <label>Name</label>
-            <input type="text" name="name" />
+            <input type="text" name="name" required />
             <label>Goal</label>
-            <input type="text" name="goal" />
+            <input type="text" name="goal" required />
             <label>Set a Donation Goal (Optional)</label>
             <input type="number" name="donationGoal" />
             <label>Upload Image</label>
-            <input type="file" name="img" />
+            <!--Made the image required for now-->
+            <input type="file" name="img" required />
             <button type="submit">Submit</button>
             <button type="reset">Reset Form</button>
         </form>

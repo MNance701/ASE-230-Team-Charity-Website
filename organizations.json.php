@@ -1,13 +1,1 @@
-<?php
-die();
-?>
-[
-    {
-        "name":"Sample",
-        "goal":"Sample goal goes here",
-        "img":"SampleImg.src",
-        "datePublished":"10/1/2024",
-        "raisedFunds":8000,
-        "donationGoal":null
-    }
-]
+[{"name":"cheese","goal":"cheese empire","donationGoal":"12","img":"6707d50e25062.png"}]
