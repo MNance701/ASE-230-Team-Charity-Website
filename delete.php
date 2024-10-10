@@ -1,7 +1,21 @@
 <?php
 $i=$_GET['index'];
 //Put the json file into an array
-$charities=json_decode(file_get_contents('organizations.json.php'),true);
+//Remove <?php die()?\> from the json file to prevent reading errors
+$string=file_get_contents('organizations.json.php');
+$string=str_replace('<?php die()?>', '', $string);
+//Read the json file
+$charities=json_decode($string,true);
+//test 
+//echo $charities[$i]['name'];
+//If user confirms the deletion of the charity
+    //delete the associated image from logos
+    
+    //remove the indexed charity from the list of charities
+    unset($charities[$i]);
+    //Write the json file with the <?php die()?\> and $charities
+    file_put_contents('organizations.json.php', '<?php die()?>'.json_encode($charities));
+
 ?>
 <html>
     <head>
