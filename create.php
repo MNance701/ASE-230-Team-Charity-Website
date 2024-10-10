@@ -18,9 +18,15 @@ if(count($_POST)>0){
         'raisedFunds'=>0,
         'donationGoal'=>$_POST['donationGoal']
     ];
-    $charities=json_decode(file_get_contents('organizations.json.php'),true);
+    //Remove <?php die()?\> from the json file to prevent reading errors
+    $string=file_get_contents('organizations.json.php');
+    $string=str_replace('<?php die()?>', '', $string);
+    //Read the json file
+    $charities=json_decode($string,true);
+    //Add $charity to the $charities array
     $charities[]=$charity;
-    file_put_contents('organizations.json.php', json_encode($charities));
+    //Write the json file with the <?php die()?\> and $charities
+    file_put_contents('organizations.json.php', '<?php die()?>'.json_encode($charities));
     
     //test that the creation of the charity works
     echo '<pre>';
