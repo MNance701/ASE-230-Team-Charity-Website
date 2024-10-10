@@ -1,6 +1,6 @@
 <?php
 /*Potential Login
-require_once('Auth.php');
+require_once('auth.php');
 if(!isLogged()){
     header('location: index.php');
     die();
@@ -13,8 +13,10 @@ if(count($_POST)>0){
     $charity=[
         'name'=>$_POST['name'],
         'goal'=>$_POST['goal'],
-        'donationGoal'=>$_POST['donationGoal'],
         'img'=>$filename,
+        //datePublished=>,
+        'raisedFunds'=>0,
+        'donationGoal'=>$_POST['donationGoal']
     ];
     $charities=json_decode(file_get_contents('organizations.json.php'),true);
     $charities[]=$charity;
