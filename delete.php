@@ -10,12 +10,15 @@ $charities=json_decode($string,true);
 //echo $charities[$i]['name'];
 //If user confirms the deletion of the charity
     //delete the associated image from logos
-    
+    $imgfilename=$charities[$i]['img'];
+    $imgfilename='/Logos/'.$imgfilename;    
+    unlink(__DIR__.$imgfilename);
     //remove the indexed charity from the list of charities
     unset($charities[$i]);
+    //Removes the indexing from the array
+    $charities=array_values($charities);
     //Write the json file with the <?php die()?\> and $charities
     file_put_contents('organizations.json.php', '<?php die()?>'.json_encode($charities));
-
 ?>
 <html>
     <head>
