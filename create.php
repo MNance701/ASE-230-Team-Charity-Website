@@ -5,6 +5,7 @@ if(!isLogged()){
     header('location: index.php');
     die();
 }*/
+//If the submit button is pressed
 if(count($_POST)>0){
     $filename=uniqid().'.'.pathinfo($_FILES['img']['name'])['extension'];
     //Move from temp folder to the Logos folder
@@ -29,9 +30,11 @@ if(count($_POST)>0){
     file_put_contents('organizations.json.php', '<?php die()?>'.json_encode($charities));
     
     //test that the creation of the charity works
+    /*
     echo '<pre>';
     print_r($charities);
     echo '</pre>';
+    */
 }
 ?>
 
@@ -47,7 +50,7 @@ if(count($_POST)>0){
             <input type="text" name="goal" required />
             <label>Set a Donation Goal (Optional)</label>
             <input type="number" name="donationGoal" />
-            <label>Upload Image</label>
+            <label>Upload Logo</label>
             <!--Made the image required for now-->
             <input type="file" name="img" required />
             <button type="submit">Submit</button>

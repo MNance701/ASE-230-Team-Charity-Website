@@ -1,1 +1,1 @@
-<?php die()?>[{"name":"cheese","goal":"cheese empire","img":"6707e4621aacb.png","raisedFunds":0,"donationGoal":"1"},{"name":"cheese","goal":"cheese empire","img":"6707e4630c150.png","raisedFunds":0,"donationGoal":"1"},{"name":"cheese","goal":"cheese empire","img":"6707e46333664.png","raisedFunds":0,"donationGoal":"1"},{"name":"cheese","goal":"cheese empire","img":"6707e4df5f5be.png","raisedFunds":0,"donationGoal":"1"}]
+<?php die()?>[{"name":"cheese","goal":"cheese empire","img":"6707e4621aacb.png","raisedFunds":0,"donationGoal":"1"}]
