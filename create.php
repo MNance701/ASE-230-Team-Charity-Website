@@ -15,7 +15,7 @@ if(count($_POST)>0){
         'name'=>$_POST['name'],
         'goal'=>$_POST['goal'],
         'img'=>$filename,
-        //datePublished=>,
+        'datePublished'=>$_POST['dateFounded'],
         'raisedFunds'=>0,
         'donationGoal'=>$_POST['donationGoal']
     ];
@@ -48,6 +48,8 @@ if(count($_POST)>0){
             <input type="text" name="name" required />
             <label>Goal</label>
             <input type="text" name="goal" required />
+            <label>Date Founded</label>
+            <input type="date" name="date_founded">
             <label>Set a Donation Goal (Optional)</label>
             <input type="number" name="donationGoal" />
             <label>Upload Logo</label>
