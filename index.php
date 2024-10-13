@@ -64,7 +64,6 @@ $charities=json_decode($string,true);
                     <?php } ?>
                 </div>
             </div>
-        </div>
         </section>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
