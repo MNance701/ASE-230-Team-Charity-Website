@@ -19,10 +19,12 @@ if(count($_POST)>0){
             <div> 
                 <label>Email</label><br />
                 <input name="email" type="email" />
+                <span class="error">* required</span>
             </div>
             <div> 
                 <label>Password</label><br />
                 <input name="password" type="password" />
+                <span class="error">* required</span>
             </div>
             <button type="Submit">Sign In</button>
             <button type="Reset">Reset</button>
