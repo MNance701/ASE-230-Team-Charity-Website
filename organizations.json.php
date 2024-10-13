@@ -1,1 +1,1 @@
-<?php die()?>[{"name":"cheese","goal":"cheese empire","img":"6707e4621aacb.png","raisedFunds":0,"donationGoal":"1"}]
+<?php die()?>[{"name":"Test#2","goal":"To test this program","img":"670b11c47d828.png","datePublished":"","raisedFunds":0,"donationGoal":"20000"},{"name":"cheese","goal":"cheese empire","img":"670b11d45ba5d.png","datePublished":"2024-10-09","raisedFunds":0,"donationGoal":"12"}]
