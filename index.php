@@ -33,6 +33,12 @@ $charities=json_decode($string,true);
                         <a href="signin.php" class="btn btn-outline-dark" type="submit">
                             Sign In
                         </a>
+                        <a href="signout.php" class="btn btn-outline-dark" type="submit">
+                            Sign Out
+                        </a>
+                        <a href="create.php" class="btn btn-outline-dark" type="submit">
+                            Create Charity
+                        </a>
                     </form>
                 </div>
             </div>
