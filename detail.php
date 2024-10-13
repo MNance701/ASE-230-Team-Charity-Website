@@ -1,6 +1,10 @@
 <?php
 $i=$_GET['index'];
-
+//Remove <?php die()?\> from the json file to prevent reading errors
+$string=file_get_contents('organizations.json.php');
+$string=str_replace('<?php die()?>', '', $string);
+//Read the json file
+$charities=json_decode($string,true);
 ?>
 <html>
 	<head>
