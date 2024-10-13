@@ -5,6 +5,8 @@ $string=file_get_contents('organizations.json.php');
 $string=str_replace('<?php die()?>', '', $string);
 //Read the json file
 $charities=json_decode($string,true);
+$img=$charities[$i]['img'];
+$img='/Logos/'.$img;
 ?>
 <html>
     <head>
@@ -20,14 +22,11 @@ $charities=json_decode($string,true);
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.php">Home</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.php">Return to Index</a></li>
                         <li class="nav-item dropdown">
                         </li>
                     </ul>
                     <form class="d-flex">
-                        <a href="index.php" class="btn btn-outline-dark" type="submit">
-                            Return to Index
-                        </a>
                         <a href="edit.php?index=<?= $i?>" class="btn btn-outline-dark" type="submit">
                             Edit Charity
                         </a>
@@ -39,9 +38,8 @@ $charities=json_decode($string,true);
             </div>
         </nav>
         <!--Display Charity-->
-        <a href="index.php">Go back</a>
 		<h1><?= $charities[$i]['name'].' '.$charities[$i]['goal'] ?> (<?= $charities[$i]['datePublished'] ?>)</h1>
-		<img width="300" src="<?= $charities[$i]['img'] ?>" />
+		<img width="300" src="<?= $img ?>" />
 		<h3>Bio</h3>
 		<p><?= $charities[$i]['donationGoal'] ?></p>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
