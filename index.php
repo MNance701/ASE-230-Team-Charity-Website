@@ -63,12 +63,12 @@ $charities=json_decode($string,true);
                                 <div class="text-center">
                                     <!-- Product name-->
                                     <h5 class="fw-bolder">
-                                        <?php for($i=0;$i<count($charities);$i++){ /*displayElement(echo $charities[$i]['name']/*)*/;?>
+                                        <?php for($i=0;$i<count($charities);$i++){ /*start bracket for the for loop, so it can include multiple lines./*displayElement(echo $charities[$i]['name']/*)*/;?>
 										<div>
 											<h3><a href="detail.php?index=<?= $i ?>"><?= $charities[$i]['name'] ?>
 											<p><?= $charities[$i]['name']/*placeholder?*/ ?></p>
 										</div>
-                                        <?php } ?>
+                                        <?php /*ends the code that is in the for loop*/} ?>
 									</h5>
                                 </div>
                             </div>
