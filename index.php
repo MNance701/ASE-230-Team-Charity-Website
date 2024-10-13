@@ -1,5 +1,10 @@
 <?php 
-require_once('function.php');
+//Remove <?php die()?\> from the json file to prevent reading errors
+$string=file_get_contents('organizations.json.php');
+$string=str_replace('<?php die()?>', '', $string);
+//Read the json file
+$charities=json_decode($string,true);
+$charities[]=$charity;
 ?>
 
 <!DOCTYPE html>
@@ -33,6 +38,9 @@ require_once('function.php');
                         <a href="signin.php"<button class="btn btn-outline-dark" type="submit">
                             Sign In
                         </button> </a>
+						<a href="create.php"<button class="btn btn-outline-dark" type="submit">
+                            Create Charity
+                        </button> </a>
                     </form>
                 </div>
             </div>
@@ -55,16 +63,18 @@ require_once('function.php');
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder"><?php for($i=0;$i>count($charity);$i++) displayElement($charity[$i],$i)
-										
-									?></h5>
-                                    <!-- Product price-->
-                                    $40.00 - $80.00
+                                    <h5 class="fw-bolder">
+                                        <?php for($i=0;$i<count($charities);$i++) /*displayElement(*/echo $charities[$i]['name']/*)*/;?>
+										<div>
+											<h3><a href="detail.php?index<?= $i ?>"><?= $charities[$i]['name'] ?>
+											<p><?= $charities[$i] ?></p>
+										</div>
+									</h5>
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Read More</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="detail.php?index=<?= $i ?>">Read More</a></div>
                             </div>
                         </div>
                     </div>
