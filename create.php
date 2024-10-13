@@ -49,7 +49,7 @@ if(count($_POST)>0){
             <label>Goal</label>
             <input type="text" name="goal" required />
             <label>Date Founded</label>
-            <input type="date" name="date_founded">
+            <input type="date" name="dateFounded">
             <label>Set a Donation Goal (Optional)</label>
             <input type="number" name="donationGoal" />
             <label>Upload Logo</label>
