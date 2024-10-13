@@ -4,7 +4,6 @@ $string=file_get_contents('organizations.json.php');
 $string=str_replace('<?php die()?>', '', $string);
 //Read the json file
 $charities=json_decode($string,true);
-$charities[]=$charity;
 ?>
 
 <!DOCTYPE html>
