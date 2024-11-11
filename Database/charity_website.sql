@@ -27,7 +27,33 @@ SET time_zone = "+00:00";
 -- Table structure for table `organizations`
 --
 
-CREATE TABLE `organizations` (
+CREATE TABLE `donor` (
+  `DonorID` int(10) UNSIGNED NOT NULL,
+  `name` int(32)  NOT NULL,
+  `Status` int(16)  NOT NULL,
+  `Email` varchar(100) NOT NULL,
+  `Password` varchar(100) NOT NULL,
+  `Phone` int(15) NOT NULL,
+  `Address` varchar(64) NOT NULL,  
+  `TotalDonations` int(10)  NOT NULL,
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `donation` (
+  `DonorID` int(10) UNSIGNED NOT NULL,
+  `OrganizationID` int(10) UNSIGNED NOT NULL,
+  `DonationAmount` int(32)  NOT NULL,  
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `organization` (
+  `OrganizationID` int(10) UNSIGNED NOT NULL,
+  `OrganizationName` int(64) NOT NULL,  
+  `Address` varchar(64) NOT NULL,
+  `Email` varchar(100) NOT NULL,
+  `Phone` int(11) NOT NULL,
+  `Bio` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `campaign` (
   `ID` int(10) UNSIGNED NOT NULL,
   `Name` varchar(32) NOT NULL,
   `Address` varchar(64) NOT NULL,
@@ -36,6 +62,14 @@ CREATE TABLE `organizations` (
   `Bio` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+CREATE TABLE `users` (
+  `ID` int(10) UNSIGNED NOT NULL,
+  `Name` varchar(32) NOT NULL,
+  `Address` varchar(64) NOT NULL,
+  `Email` varchar(100) NOT NULL,
+  `Phone` int(11) NOT NULL,
+  `Bio` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 --
 -- Indexes for dumped tables
 --
@@ -43,12 +77,32 @@ CREATE TABLE `organizations` (
 --
 -- Indexes for table `organizations`
 --
+ALTER TABLE `donor`
+  ADD PRIMARY KEY (`DonorID`), 
+  ADD UNIQUE KEY `Email` (`Email`),
+  ADD UNIQUE KEY `Password` (`Password`),
+  ADD UNIQUE KEY `Status` (`Status`),  
+  ADD UNIQUE KEY `Phone` (`Phone`),
+  ADD UNIQUE KEY `Address` (`Name`),
+  ADD UNIQUE KEY `Bio` (`Name`),
+  ADD UNIQUE KEY `TotalDonations` (`TotalDonations`),  
+  ADD KEY `ID` (`OrganizationID`);
+
+ALTER TABLE `donations`
+  ADD PRIMARY KEY (`DonorID`),
+  ADD Primary KEY `OrganizationID` (`OrganizationID`),
+  ADD UNIQUE KEY `DonationAmount` (`DonationAmount`),  
+  ADD KEY `DonorID` (`DonorID`); ,
+  ADD KEY `OrganizationID` (`OrganizationID`);
+
 ALTER TABLE `organizations`
-  ADD PRIMARY KEY (`ID`),
+  ADD PRIMARY KEY (`OrganizationID`),
+  ADD UNIQUE KEY `OrganizationName` (`OrganizationName`),  
   ADD UNIQUE KEY `Email` (`Email`),
   ADD UNIQUE KEY `Phone` (`Phone`),
-  ADD UNIQUE KEY `Name` (`Name`),
-  ADD KEY `ID` (`ID`);
+  ADD UNIQUE KEY `Address` (`Name`),
+  ADD UNIQUE KEY `Bio` (`Name`),  
+  ADD KEY `OrganizationID` (`OrganizationID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
