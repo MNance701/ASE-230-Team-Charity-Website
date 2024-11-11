@@ -108,6 +108,24 @@ ALTER TABLE `organizations`
 -- AUTO_INCREMENT for dumped tables
 --
 
+INSERT INTO `donor` (`name`, `Status`, `Email`, `Password`, `Phone`, `Address`, `TotalDonations`) VALUES
+('Alice Johnson', 1, 'alice@example.com', 'password123', 1234567890, '123 Elm St.', 250),
+('Bob Smith', 1, 'bob@example.com', 'securepass', 2345678901, '456 Oak Ave.', 150),
+('Charlie Brown', 0, 'charlie@example.com', 'charliepass', 3456789012, '789 Pine Blvd.', 300);
+
+INSERT INTO `donation` (`DonorID`, `OrganizationID`, `DonationAmount`) VALUES
+(1, 1, 100),
+(2, 2, 50),
+(3, 3, 150),
+(1, 2, 75),
+(2, 3, 125);
+
+INSERT INTO `organization` (`OrganizationName`, `Address`, `Email`, `Phone`, `Bio`) VALUES
+('Helping Hands', '123 Charity St.', 'info@helpinghands.org', 1234567890, 'Provides food and shelter'),
+('Green Earth', '456 Green Way', 'contact@greenearth.org', 2345678901, 'Environmental conservation efforts'),
+('Future Scholars', '789 Learning Ave.', 'support@futurescholars.org', 3456789012, 'Scholarship programs for students');
+
+
 --
 -- AUTO_INCREMENT for table `organizations`
 --
