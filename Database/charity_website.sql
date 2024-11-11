@@ -53,23 +53,7 @@ CREATE TABLE `organization` (
   `Bio` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `campaign` (
-  `ID` int(10) UNSIGNED NOT NULL,
-  `Name` varchar(32) NOT NULL,
-  `Address` varchar(64) NOT NULL,
-  `Email` varchar(100) NOT NULL,
-  `Phone` int(11) NOT NULL,
-  `Bio` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `users` (
-  `ID` int(10) UNSIGNED NOT NULL,
-  `Name` varchar(32) NOT NULL,
-  `Address` varchar(64) NOT NULL,
-  `Email` varchar(100) NOT NULL,
-  `Phone` int(11) NOT NULL,
-  `Bio` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 --
 -- Indexes for dumped tables
 --
