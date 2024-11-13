@@ -53,6 +53,22 @@ CREATE TABLE `organization` (
   `Bio` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+CREATE TABLE `campaign` (
+  `CampaignID` int(10) UNSIGNED NOT NULL,
+  `Description` varchar(100) NOT NULL,  
+  `StartDate` varchar(64) NOT NULL,
+  `EndDate` varchar(100) NOT NULL,
+  `Goal` int(15) NOT NULL,
+  `TotalRaised` int(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `user` (
+  `UserID` int(10) UNSIGNED NOT NULL,
+  `UserName` varchar(100) NOT NULL,  
+  `Password` varchar(64) NOT NULL,
+  `Email` varchar(100) NOT NULL,
+  `Status` int(16) NOT NULL,
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
@@ -88,6 +104,22 @@ ALTER TABLE `organizations`
   ADD UNIQUE KEY `Bio` (`Name`),  
   ADD KEY `OrganizationID` (`OrganizationID`);
 
+ALTER TABLE `campaign`
+  ADD PRIMARY KEY (`CampaignID`),
+  ADD UNIQUE KEY `Description` (`Description`),  
+  ADD UNIQUE KEY `StartDate` (`StartDate`),
+  ADD UNIQUE KEY `EndDate` (`EndDate`),
+  ADD UNIQUE KEY `Goal` (`Goal`),
+  ADD UNIQUE KEY `TotalRaised` (`TotalRaised`),  
+  ADD KEY `CampaignID` (`CampaignID`);
+
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`UserID`),
+  ADD UNIQUE KEY `UserName` (`UserName`),  
+  ADD UNIQUE KEY `Password` (`Password`),
+  ADD UNIQUE KEY `Email` (`Email`),
+  ADD UNIQUE KEY `Status` (`Status`),
+  ADD KEY `UserID` (`UserID`);
 --
 -- AUTO_INCREMENT for dumped tables
 --
@@ -124,6 +156,14 @@ COMMIT;
 
 ALTER TABLE `organizations`
   MODIFY `OrganizationID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+COMMIT;
+
+ALTER TABLE `campaign`
+  MODIFY `CampaignID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+COMMIT;
+
+ALTER TABLE `user`
+  MODIFY `UserID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
