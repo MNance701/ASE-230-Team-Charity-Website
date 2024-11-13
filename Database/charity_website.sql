@@ -141,6 +141,19 @@ INSERT INTO `organization` (`OrganizationName`, `Address`, `Email`, `Phone`, `Bi
 ('Green Earth', '456 Green Way', 'contact@greenearth.org', 2345678901, 'Environmental conservation efforts'),
 ('Future Scholars', '789 Learning Ave.', 'support@futurescholars.org', 3456789012, 'Scholarship programs for students');
 
+INSERT INTO `campaign` (`Description`, `StartDate`, `EndDate`, `Goal`, `TotalRaised`) VALUES
+('Back to School Supplies Drive', '2024-01-10', '2024-03-10', 5000.00, 1200.00),
+('Holiday Food Drive', '2024-11-01', '2024-12-31', 10000.00, 7500.00),
+('Emergency Relief Fund', '2024-04-01', '2024-06-30', 20000.00, 18000.00),
+('Health and Wellness Awareness', '2024-07-01', '2024-09-30', 8000.00, 4000.00),
+('Literacy for All', '2024-05-15', '2024-08-15', 15000.00, 13000.00);
+
+INSERT INTO `user` (`UserName`, `Password`, `Email`, `Status`) VALUES
+('john_doe', 'pass1234', 'john.doe@example.com', 'active'),
+('jane_smith', 'securepassword', 'jane.smith@example.com', 'active'),
+('alex_jones', 'mypass2024', 'alex.jones@example.com', 'inactive'),
+('lisa_wang', 'qwerty123', 'lisa.wang@example.com', 'active'),
+('michael_lee', 'letmein456', 'michael.lee@example.com', 'active');
 
 --
 -- AUTO_INCREMENT for table `organizations`
