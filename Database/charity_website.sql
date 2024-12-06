@@ -49,7 +49,9 @@ CREATE TABLE `donation` (
   `DonationAmount` decimal(10,2) NOT NULL,
   PRIMARY KEY (`DonationID`),
   KEY `DonorID` (`DonorID`),
-  KEY `OrganizationID` (`OrganizationID`)
+  KEY `OrganizationID` (`OrganizationID`),
+  FOREIGN KEY (`DonorID`) REFERENCES `donor` (`DonorID`) ON DELETE CASCADE,
+  FOREIGN KEY (`OrganizationID`) REFERENCES `organization` (`OrganizationID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -91,6 +93,23 @@ CREATE TABLE `user` (
   `Email` varchar(100) NOT NULL UNIQUE,
   `Status` varchar(16) NOT NULL,
   PRIMARY KEY (`UserID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Table structure for table `campaign_donation`
+--
+
+CREATE TABLE `campaign_donation` (
+  `CampaignDonationID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `CampaignID` int(10) UNSIGNED NOT NULL,
+  `DonorID` int(10) UNSIGNED NOT NULL,
+  `DonationAmount` decimal(10,2) NOT NULL,
+  `DonationDate` datetime NOT NULL,
+  PRIMARY KEY (`CampaignDonationID`),
+  KEY `CampaignID` (`CampaignID`),
+  KEY `DonorID` (`DonorID`),
+  FOREIGN KEY (`CampaignID`) REFERENCES `campaign` (`CampaignID`) ON DELETE CASCADE,
+  FOREIGN KEY (`DonorID`) REFERENCES `donor` (`DonorID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
