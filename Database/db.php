@@ -1,8 +1,8 @@
 <?php
 $host = '127.0.0.1';
 $db = 'charity_website';
-$user = 'root'; // Replace with your database username
-$pass = ''; // Replace with your database password
+$user = 'AMC';
+$pass = 'Charity2024$';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
