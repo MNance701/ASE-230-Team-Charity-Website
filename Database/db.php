@@ -1,5 +1,5 @@
 <?php
-$host = '127.0.0.1';
+$host = 'localhost';
 $db = 'charity_website';
 $user = 'AMC';
 $pass = 'Charity2024$';
