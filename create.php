@@ -16,7 +16,7 @@ if(count($_POST)>0){
     //Store in db
     $query=$db->prepare('INSERT INTO organization(`OrganizationName`,
     `Address`, `Email`, `Phone`, `Bio`, `Logo`)VALUES(?,?,?,?,?,?)')
-    $query->execute([$_POST['email'], $_POST['lastname'], $_POST['firstname']]);
+    $query->execute([$_POST['name'], $_POST['address'], $_POST['email'], $_POST['phone'], $_POST['bio'], $filename]);
     /*
     ***Storing data in the json file: ***
     ***This is not necessary now since the database handles the data***
@@ -61,6 +61,8 @@ if(count($_POST)>0){
             <input type="email" name="email" required />
             <label>Phone</label>
             <input type="text" name="phone" required />
+            <label>Bio</label>
+            <input type="textarea" name="bio" required />
             <!--
             date founded is currently not in use
             <label>Date Founded</label>
