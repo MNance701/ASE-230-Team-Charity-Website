@@ -1,11 +1,20 @@
 <?php
+require_once('db/db.php');
 $i=$_GET['index'];
+
+$query=$db->prepare('SELECT * FROM organization WHERE OrganizationID=?');
+$query->execute([$i]);
+$organization = $query->fetch();
+/*
+***json stuff***
 //Remove <?php die()?\> from the json file to prevent reading errors
 $string=file_get_contents('organizations.json.php');
 $string=str_replace('<?php die()?>', '', $string);
 //Read the json file
 $charities=json_decode($string,true);
-$img=$charities[$i]['img'];
+*/
+//Set image
+$img=$organization['Logo'];
 $img='/Logos/'.$img;
 ?>
 <html>
@@ -27,10 +36,10 @@ $img='/Logos/'.$img;
                         </li>
                     </ul>
                     <form class="d-flex">
-                        <a href="edit.php?index=<?= $i?>" class="btn btn-outline-dark" type="submit">
+                        <a href="charity_create_edit_delete/edit.php?index=<?= $i?>" class="btn btn-outline-dark" type="submit">
                             Edit Charity
                         </a>
-						<a href="delete.php?index=<?= $i?>" class="btn btn-outline-dark" type="submit">
+						<a href="charity_create_edit_delete/delete.php?index=<?= $i?>" class="btn btn-outline-dark" type="submit">
                             Delete Charity
                         </a>
                     </form>
@@ -38,10 +47,13 @@ $img='/Logos/'.$img;
             </div>
         </nav>
         <!--Display Charity-->
-		<h1><?= $charities[$i]['name'].' '.$charities[$i]['goal'] ?> (<?= $charities[$i]['datePublished'] ?>)</h1>
+		<h1><?= $organization['OrganizationName']?></h1>
+        <h2><?= $organization['Address']?></h2>
+        <h2><?= $organization['Email']?></h2>
+        <h3><?= $organization['Phone']?></h3>
 		<img width="300" src="<?= $img ?>" />
 		<h3>Bio</h3>
-		<p><?= $charities[$i]['donationGoal'] ?></p>
+		<p><?= $organization['Bio'] ?></p>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </body>
 </html>
