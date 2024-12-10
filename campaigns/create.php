@@ -17,6 +17,7 @@ if(count($_POST)>0){
     $query=$db->prepare('INSERT INTO campaign(`OrganizationID`,
     `CampaignName`, `Description`, `StartDate`, `EndDate`, `Goal`)VALUES(?,?,?,?,?,?)');
     $query->execute([$orgID['OrganizationID'], $_POST['name'], $_POST['description'], $_POST['startdate'], $_POST['enddate'], $_POST['goal']]);
+    header('location:index.php');
 }
 ?>
 
