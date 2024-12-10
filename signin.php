@@ -3,8 +3,8 @@ session_start();
 
 $host = '127.0.0.1';
 $db = 'charity_website';
-$user = 'AMC';
-$pass = 'Charity2024$';
+$user = 'root';
+$pass = '';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
