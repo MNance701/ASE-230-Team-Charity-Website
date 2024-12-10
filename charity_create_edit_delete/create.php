@@ -11,7 +11,7 @@ if(count($_POST)>0){
     $filename=uniqid().'.'.pathinfo($_FILES['img']['name'])['extension'];
     //Move from temp folder to the Logos folder
     //The actual image is stored in the Logos folder, but the filename is stored in the db
-    move_uploaded_file($_FILES['img']['tmp_name'],__DIR__.'/Logos/'.$filename);
+    move_uploaded_file($_FILES['img']['tmp_name'],'../Logos/'.$filename);
 
     //Store in db
     $query=$db->prepare('INSERT INTO organization(`OrganizationName`,
