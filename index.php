@@ -1,5 +1,8 @@
 <?php 
-require_once('db/db.php')
+require_once('db/db.php');
+//Access charities from the database
+$query=$db->query('SELECT * FROM organization');
+
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +25,7 @@ require_once('db/db.php')
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.php">Home</a></li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="campaigns/index.php">campaigns</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="campaigns/index.php">Campaigns</a></li>
                         <li class="nav-item dropdown">
                         </li>
                     </ul>
@@ -52,13 +55,13 @@ require_once('db/db.php')
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                    <?php for($i=0;$i<count($charities);$i++) {?>
+                    <?php while($organization=$query->fetch()){?>
                         <div class="col mb-5">
                             <div class="card h-90">
                                 <div class="card-body p-4">
                                     <div class="text-center">
                                         <h5 class="fw-bolder">
-                                            <h3><a href="detail.php?index=<?= $i ?>"><?= $charities[$i]['name'] ?>
+                                            <h3><a href="detail.php?index=<?= $organization['OrganizationID'] ?>"><?= $organization['OrganizationName'] ?>
                                         </h5>
                                     </div>
                                 </div>
