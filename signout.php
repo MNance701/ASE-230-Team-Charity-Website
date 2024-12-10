@@ -8,8 +8,8 @@ if (isset($_SESSION['username'])) {
     session_destroy();
 
     echo '<h1>Sign Out Successful</h1>';
-    echo '<a href="signin.php">Sign In</a>';
+    echo '<a href="auth/signin.php">Sign In</a>';
 } else {
     echo '<h1>You are not logged in!</h1>';
-    echo '<a href="signin.php">Sign In</a>';
+    echo '<a href="auth/signin.php">Sign In</a>';
 }
