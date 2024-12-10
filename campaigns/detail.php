@@ -38,10 +38,10 @@ $campaign = $query->fetch();
         </nav>
         <!--Display Charity-->
 		<h1><?= $campaign['CampaignName']?></h1>
-        <h2>Organization:<?= $campaign['OrganizationName']?></h2>
-        <h2>Goal:<?= $campaign['Goal']?></h2>
-        <h3>Start Date:<?= $campaign['StartDate']?></h3>
-        <h3>End Date:<?= $campaign['EndDate']?></h3>
+        <h2>Organization: <?= $campaign['OrganizationName']?></h2>
+        <h2>Goal: <?= $campaign['Goal']?></h2>
+        <h3>Start Date: <?= $campaign['StartDate']?></h3>
+        <h3>End Date: <?= $campaign['EndDate']?></h3>
 		<h3>Description</h3>
 		<p><?= $campaign['Description'] ?></p>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
