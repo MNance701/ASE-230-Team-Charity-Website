@@ -1,5 +1,5 @@
 <?php
-require_once('db.php');
+require_once('db/db.php');
 /*Potential Login
 require_once('auth.php');
 if(!isLogged()){

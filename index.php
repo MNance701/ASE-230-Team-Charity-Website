@@ -1,9 +1,5 @@
 <?php 
-//Remove <?php die()?\> from the json file to prevent reading errors
-$string=file_get_contents('organizations.json.php');
-$string=str_replace('<?php die()?>', '', $string);
-//Read the json file
-$charities=json_decode($string,true);
+require_once('db/db.php')
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +33,7 @@ $charities=json_decode($string,true);
                         <a href="signout.php" class="btn btn-outline-dark" type="submit">
                             Sign Out
                         </a>
-                        <a href="create.php" class="btn btn-outline-dark" type="submit">
+                        <a href="charity_create_edit_delete/create.php" class="btn btn-outline-dark" type="submit">
                             Create Charity
                         </a>
                     </form>
