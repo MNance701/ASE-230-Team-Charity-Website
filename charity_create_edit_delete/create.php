@@ -1,5 +1,5 @@
 <?php
-require_once('db/db.php');
+require_once('../db/db.php');
 /*Potential Login
 require_once('auth.php');
 if(!isLogged()){
@@ -15,7 +15,7 @@ if(count($_POST)>0){
 
     //Store in db
     $query=$db->prepare('INSERT INTO organization(`OrganizationName`,
-    `Address`, `Email`, `Phone`, `Bio`, `Logo`)VALUES(?,?,?,?,?,?)')
+    `Address`, `Email`, `Phone`, `Bio`, `Logo`)VALUES(?,?,?,?,?,?)');
     $query->execute([$_POST['name'], $_POST['address'], $_POST['email'], $_POST['phone'], $_POST['bio'], $filename]);
     /*
     ***Storing data in the json file: ***
