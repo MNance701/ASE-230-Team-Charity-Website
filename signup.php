@@ -1,68 +1,93 @@
 <?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Include the database connection
+    require 'db.php';
 
-if(count($_POST)>0){
-    if(!isset($_POST['firstname'][0])) die('The first name is required');
-	if(!isset($_POST['lastname'][0])) die('The last name is required');
-	if(!isset($_POST['email'][0])) die('The email is required');
-    if(!isset($_POST['address'][0])) die('The address is required');
-    if(!isset($_POST['age'][0])) die('The age is required');
-	if(!isset($_POST['password'][0])) die('The password is required');
-    if(!isset($_POST['confirmpassword'][0])) die('The confirm password is required');
-	
-	if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) die('The email is in the wrong format');
-	
-	echo 'Thank you, '.htmlspecialchars($_POST['name']);
-}
+    // Sanitize and validate input data
+    $firstname = trim($_POST['firstname'] ?? '');
+    $lastname = trim($_POST['lastname'] ?? '');
+    $email = trim($_POST['email'] ?? '');
+    $address = trim($_POST['address'] ?? '');
+    $age = intval($_POST['age'] ?? 0);
+    $username = trim($_POST['username'] ?? '');
+    $password = trim($_POST['password'] ?? '');
+    $confirmpassword = trim($_POST['confirmpassword'] ?? '');
 
-if(count($_POST)>0){
-	echo '<pre>';
-	print_r($_POST);
-	foreach($_POST as $key=>$value) echo $key.':'.$value.'<br />';
-}else{
+    // Check required fields
+    if (!$firstname || !$lastname || !$email || !$address || !$age || !$username || !$password || !$confirmpassword) {
+        die('All fields are required.');
+    }
+
+    // Validate email format
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        die('Invalid email format.');
+    }
+
+    // Check if passwords match
+    if ($password !== $confirmpassword) {
+        die('Passwords do not match.');
+    }
+
+    // Hash the password
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+    // Insert user into the database
+    $stmt = $pdo->prepare('INSERT INTO donor (name, Email, Password, Address, TotalDonations) VALUES (?, ?, ?, ?, 0)');
+    try {
+        $stmt->execute(["$firstname $lastname", $email, $hashedPassword, $address]);
+        echo 'Registration successful! <a href="signin.php">Sign in</a>';
+    } catch (PDOException $e) {
+        if ($e->getCode() == 23000) { // Duplicate entry
+            die('Email already exists.');
+        }
+        die('Database error: ' . $e->getMessage());
+    }
+} else {
 ?>
-        <form method="POST" action="process.php">
-            <div> 
-                <label>First Name</label><br />
-                <input name="firstname" type="text" />
-                <span class="error">* required</span>
-            </div>
-            <div> 
-                <label>Last Name</label><br />
-                <input name="lastname" type="text" />
-                <span class="error">* required</span>
-            </div>
-            <div>
-                <label>Email</label><br />
-                <input name="email" type="email" />
-                <span class="error">* required</span>
-            </div>
-            <div> 
-                <label>Address</label><br />
-                <input name="address" type="text" />
-                <span class="error">* required</span>
-            </div>
-            <div>
-                <label>Age</label><br />
-                <input name="age" type="number" />
-                <span class="error">* required</span>
-            </div>
-            <div>
-                <label>Username</label><br />
-                <input name="username" type="text" />
-                <span class="error">* required</span>
-            </div>
-            <div> 
-                <label>Password</label><br />
-                <input name="password" type="password" />
-                <span class="error">* required</span>
-            </div>
-            <div> 
-                <label>Confirm Password</label><br />
-                <input name="confirmpassword" type="password" />
-                <span class="error">* required</span>
-            </div>
-            <button type="submit">Submit Form</button>
-            <button type="Reset">Reset Form</button>
-        </form>
+    <form method="POST" action="">
+        <div>
+            <label>First Name</label><br />
+            <input name="firstname" type="text" required />
+            <span class="error">* required</span>
+        </div>
+        <div>
+            <label>Last Name</label><br />
+            <input name="lastname" type="text" required />
+            <span class="error">* required</span>
+        </div>
+        <div>
+            <label>Email</label><br />
+            <input name="email" type="email" required />
+            <span class="error">* required</span>
+        </div>
+        <div>
+            <label>Address</label><br />
+            <input name="address" type="text" required />
+            <span class="error">* required</span>
+        </div>
+        <div>
+            <label>Age</label><br />
+            <input name="age" type="number" required />
+            <span class="error">* required</span>
+        </div>
+        <div>
+            <label>Username</label><br />
+            <input name="username" type="text" required />
+            <span class="error">* required</span>
+        </div>
+        <div>
+            <label>Password</label><br />
+            <input name="password" type="password" required />
+            <span class="error">* required</span>
+        </div>
+        <div>
+            <label>Confirm Password</label><br />
+            <input name="confirmpassword" type="password" required />
+            <span class="error">* required</span>
+        </div>
+        <button type="submit">Submit Form</button>
+        <button type="reset">Reset Form</button>
+    </form>
 <?php
 }
+?>
