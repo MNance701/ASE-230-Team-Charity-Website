@@ -1,8 +1,8 @@
 <?php
 $host = 'localhost';
 $db = 'charity_website';
-$user = 'root';
-$pass = '';
+$user = 'AMC';
+$pass = 'Charity2024$';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
