@@ -1,7 +1,7 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Include the database connection
-    require 'db.php';
+    require('../db.php');
 
     // Sanitize and validate input data
     $firstname = trim($_POST['firstname'] ?? '');

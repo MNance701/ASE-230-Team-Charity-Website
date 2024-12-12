@@ -1,7 +1,7 @@
 <?php 
-require_once('db/db.php');
-//Access charities from the database
-$query=$db->query('SELECT * FROM organization');
+require_once('../../db/db.php');
+//Access campaigns from the database
+$query=$db->query('SELECT campaign.*,organization.OrganizationName FROM campaign JOIN organization ON campaign.OrganizationID=organization.OrganizationID');
 
 ?>
 
@@ -30,14 +30,14 @@ $query=$db->query('SELECT * FROM organization');
                         </li>
                     </ul>
                     <form class="d-flex">
-                        <a href="signin.php" class="btn btn-outline-dark" type="submit">
+                        <a href="../signin.php" class="btn btn-outline-dark" type="submit">
                             Sign In
                         </a>
-                        <a href="signout.php" class="btn btn-outline-dark" type="submit">
+                        <a href="../signout.php" class="btn btn-outline-dark" type="submit">
                             Sign Out
                         </a>
-                        <a href="charity_create_edit_delete/create.php" class="btn btn-outline-dark" type="submit">
-                            Create Charity
+                        <a href="create.php" class="btn btn-outline-dark" type="submit">
+                            Create Campaign
                         </a>
                     </form>
                 </div>
@@ -47,7 +47,7 @@ $query=$db->query('SELECT * FROM organization');
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">New Charities</h1>
+                    <h1 class="display-4 fw-bolder">New Campaigns</h1>
                 </div>
             </div>
         </header>
@@ -55,13 +55,14 @@ $query=$db->query('SELECT * FROM organization');
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                    <?php while($organization=$query->fetch()){?>
+                    <?php while($campaign=$query->fetch()){?>
                         <div class="col mb-5">
                             <div class="card h-90">
                                 <div class="card-body p-4">
                                     <div class="text-center">
                                         <h5 class="fw-bolder">
-                                            <h3><a href="detail.php?index=<?= $organization['OrganizationID'] ?>"><?= $organization['OrganizationName'] ?>
+                                            <h3><a href="detail.php?index=<?= $campaign['CampaignID'] ?>"><?= $campaign['CampaignName'] ?>
+                                            <h4><?= $campaign['OrganizationName']?></h4>
                                         </h5>
                                     </div>
                                 </div>
