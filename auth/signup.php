@@ -1,7 +1,7 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Include the database connection
-    require('../db.php');
+    require_once('../db/db.php');
 
     // Sanitize and validate input data
     $firstname = trim($_POST['firstname'] ?? '');
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     // Insert user into the database
-    $stmt = $pdo->prepare('INSERT INTO donor (name, Email, Password, Address, TotalDonations) VALUES (?, ?, ?, ?, 0)');
+    $stmt = $db->prepare('INSERT INTO donor (name, Email, Password, Address, TotalDonations) VALUES (?, ?, ?, ?, 0)');
     try {
         $stmt->execute(["$firstname $lastname", $email, $hashedPassword, $address]);
         echo 'Registration successful! <a href="signin.php">Sign in</a>';

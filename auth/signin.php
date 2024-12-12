@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     try {
-        $stmt = $pdo->prepare('SELECT * FROM user WHERE Email = :email');
+        $stmt = $db->prepare('SELECT * FROM user WHERE Email = :email');
         $stmt->execute(['email' => $email]);
         $user = $stmt->fetch();
 
