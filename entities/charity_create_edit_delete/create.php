@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once('../../db/db.php');
 /*Potential Login
 require_once('auth.php');
@@ -19,33 +20,6 @@ if(count($_POST)>0){
     $query->execute([$_POST['name'], $_POST['address'], $_POST['email'], $_POST['phone'], $_POST['bio'], $filename]);
     //Sends the user to the detail page of the website that they just created
     header('location:../detail.php?index='.$db->lastInsertId());
-    /*
-    ***Storing data in the json file: ***
-    ***This is not necessary now since the database handles the data***
-    $charity=[
-        'name'=>$_POST['name'],
-        'goal'=>$_POST['goal'],
-        'img'=>$filename,
-        'datePublished'=>$_POST['dateFounded'],
-        'raisedFunds'=>0,
-        'donationGoal'=>$_POST['donationGoal']
-    ];
-    //Remove <?php die()?\> from the json file to prevent reading errors
-    $string=file_get_contents('organizations.json.php');
-    $string=str_replace('<?php die()?>', '', $string);
-    //Read the json file
-    $charities=json_decode($string,true);
-    //Add $charity to the $charities array
-    $charities[]=$charity;
-    //Write the json file with the <?php die()?\> and $charities
-    file_put_contents('organizations.json.php', '<?php die()?>'.json_encode($charities));
-    
-    //test that the creation of the charity works
-    /*
-    echo '<pre>';
-    print_r($charities);
-    echo '</pre>';
-    */
 }
 ?>
 
@@ -65,16 +39,6 @@ if(count($_POST)>0){
             <input type="text" name="phone" required />
             <label>Bio</label>
             <input type="textarea" name="bio" required />
-            <!--
-            date founded is currently not in use
-            <label>Date Founded</label>
-            <input type="date" name="dateFounded">
-            -->
-            <!--
-            donation goal will be used for creating campaigns
-            <label>Set a Donation Goal (Optional)</label>
-            <input type="number" name="donationGoal" />
-            -->
             <label>Upload Logo</label>
             <!--Made the image required for now-->
             <input type="file" name="img" required />
