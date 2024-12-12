@@ -5,39 +5,13 @@ $i=$_GET['index'];
 //If the submit button is pressed
 //The charity is changed
 if(count($_POST)>0){
-    /*
-    ***json stuff***
-    //Remove <?php die()?\> from the json file to prevent reading errors
-    $string=file_get_contents('organizations.json.php');
-    $string=str_replace('<?php die()?>', '', $string);
-    //Read the json file
-    $charities=json_decode($string,true);
-    $raisedFunds=$charities[$i]['raisedFunds'];
-    */
     //for the image
-
 	if(isset($_FILES['image'])){
 		//the user wants to modify the image
         $image=uniqid().'.'.pathinfo($_FILES['image']['name'])['extension'];
 	}else $image=$_POST['old_image'];
     //Move from temp folder to the Logos folder
     move_uploaded_file($_FILES['image']['tmp_name'],'../Logos/'.$image);
-    /*json stuff
-    ***
-    //Store in db
-    $charity=[
-        'name'=>$_POST['name'],
-        'goal'=>$_POST['goal'],
-        'img'=>$image,
-        'datePublished'=>$_POST['datePublished'],
-        'raisedFunds'=>$raisedFunds,
-        'donationGoal'=>$_POST['donationGoal']
-    ];
-    //Add $charity to the $charities array
-    $charities[$i]=$charity;
-    //Write the json file with the <?php die()?\> and $charities
-    file_put_contents('organizations.json.php', '<?php die()?>'.json_encode($charities));
-    */
     //change the organization in the database
     $query=$db->prepare('UPDATE  organization SET `OrganizationName`=?,
     `Address`=?, `Email`=?, `Phone`=?, `Bio`=?, `Logo`=? WHERE OrganizationID=?');
@@ -47,16 +21,6 @@ if(count($_POST)>0){
 $query=$db->prepare('SELECT * FROM organization WHERE OrganizationID=?');
 $query->execute([$i]);
 $oldOrganization = $query->fetch();
-/*
-***json stuff***
-//If the charity form has not been submitted
-//Remove <?php die()?\> from the json file to prevent reading errors
-$string=file_get_contents('organizations.json.php');
-$string=str_replace('<?php die()?>', '', $string);
-//Read the json file
-$charities=json_decode($string,true);
-$oldCharity=$charities[$i];
-*/
 ?>
 <html>
     <head>
