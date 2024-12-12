@@ -18,7 +18,7 @@ if(count($_POST)>0){
     `Address`, `Email`, `Phone`, `Bio`, `Logo`)VALUES(?,?,?,?,?,?)');
     $query->execute([$_POST['name'], $_POST['address'], $_POST['email'], $_POST['phone'], $_POST['bio'], $filename]);
     //Sends the user to the detail page of the website that they just created
-    header('location:../detail.php?index='.$db->lastInsertId())
+    header('location:../detail.php?index='.$db->lastInsertId());
     /*
     ***Storing data in the json file: ***
     ***This is not necessary now since the database handles the data***
