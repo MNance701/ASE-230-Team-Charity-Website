@@ -25,13 +25,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     try {
-        $stmt = $db->prepare('SELECT * FROM user WHERE Email = :email');
+        $stmt = $db->prepare('SELECT * FROM donor WHERE Email = ?`');
         $stmt->execute(['email' => $email]);
-        $user = $stmt->fetch();
+        $donor = $stmt->fetch();
 
-        if ($user && password_verify($password, $user['Password'])) {
-            $_SESSION['username'] = $user['UserName'];
-            $_SESSION['user_id'] = $user['UserID'];
+        if ($user && password_verify($password, $donor['Password'])) {
+            $_SESSION['username'] = $donor['Name'];
+            $_SESSION['role'] = $donor['Status'];
 
             header('Location: ../dashboard.php');
             exit;
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo '<p style="color: red;">Invalid email or password</p>';
         }
     } catch (PDOException $e) {
-        die('Database error: ' . $e->getMessage());
+        die('Database error: '.$e->getMessage());
     }
 }
 ?>

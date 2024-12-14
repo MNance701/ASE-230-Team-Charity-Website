@@ -30,10 +30,10 @@ $query=$db->query('SELECT campaign.*,organization.OrganizationName FROM campaign
                         </li>
                     </ul>
                     <form class="d-flex">
-                        <a href="../signin.php" class="btn btn-outline-dark" type="submit">
+                        <a href="../../signin.php" class="btn btn-outline-dark" type="submit">
                             Sign In
                         </a>
-                        <a href="../signout.php" class="btn btn-outline-dark" type="submit">
+                        <a href="../../signout.php" class="btn btn-outline-dark" type="submit">
                             Sign Out
                         </a>
                         <a href="create.php" class="btn btn-outline-dark" type="submit">
