@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once('../../db/db.php');
 //Gets the index of the specific charity
 $i=$_GET['index'];

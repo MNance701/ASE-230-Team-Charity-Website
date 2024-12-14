@@ -25,15 +25,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     try {
-        $stmt = $db->prepare('SELECT * FROM donor WHERE Email = ?`');
-        $stmt->execute(['email' => $email]);
+        $stmt = $db->prepare('SELECT * FROM donor WHERE Email=?');
+        $stmt->execute([$email]);
         $donor = $stmt->fetch();
 
         if ($user && password_verify($password, $donor['Password'])) {
             $_SESSION['username'] = $donor['Name'];
             $_SESSION['role'] = $donor['Status'];
 
-            header('Location: ../dashboard.php');
+            header('Location: ../entities/index.php');
             exit;
         } else {
             echo '<p style="color: red;">Invalid email or password</p>';

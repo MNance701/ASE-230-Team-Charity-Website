@@ -1,4 +1,5 @@
 <?php 
+session_start();
 require_once('../db/db.php');
 //Access charities from the database
 $query=$db->query('SELECT * FROM organization');
@@ -30,10 +31,10 @@ $query=$db->query('SELECT * FROM organization');
                         </li>
                     </ul>
                     <form class="d-flex">
-                        <a href="../signin.php" class="btn btn-outline-dark" type="submit">
+                        <a href="../auth/signin.php" class="btn btn-outline-dark" type="submit">
                             Sign In
                         </a>
-                        <a href="../signout.php" class="btn btn-outline-dark" type="submit">
+                        <a href="../auth/signout.php" class="btn btn-outline-dark" type="submit">
                             Sign Out
                         </a>
                         <a href="charity_create_edit_delete/create.php" class="btn btn-outline-dark" type="submit">

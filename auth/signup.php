@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     // Insert user into the database
-    $stmt = $db->prepare('INSERT INTO donor (name, Email, Password, Address, TotalDonations) VALUES (?, ?, ?, ?, 0)');
+    $stmt = $db->prepare('INSERT INTO donor (Name, Email, Password, Address, TotalDonations) VALUES (?, ?, ?, ?, 0)');
     try {
         $stmt->execute(["$firstname $lastname", $email, $hashedPassword, $address]);
         echo 'Registration successful! <a href="signin.php">Sign in</a>';
