@@ -1,12 +1,11 @@
 <?php
 session_start();
 require_once('../../db/db.php');
-/*Potential Login
-require_once('auth.php');
-if(!isLogged()){
-    header('location: index.php');
+//If user is not logged in, send them away
+if(!isset($_SESSION)){
+    header('location: ../index.php');
     die();
-}*/
+}
 //If the submit button is pressed
 if(count($_POST)>0){
     $filename=uniqid().'.'.pathinfo($_FILES['img']['name'])['extension'];
