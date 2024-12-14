@@ -38,12 +38,17 @@ $img='/Logos/'.$img;
                         </li>
                     </ul>
                     <form class="d-flex">
-                        <a href="charity_create_edit_delete/edit.php?index=<?= $i?>" class="btn btn-outline-dark" type="submit">
-                            Edit Charity
-                        </a>
-						<a href="charity_create_edit_delete/delete.php?index=<?= $i?>" class="btn btn-outline-dark" type="submit">
-                            Delete Charity
-                        </a>
+                        <?php
+                        //if the user is authorized for these functions
+                        if($_SESSION['role'] == 3 || $_SESSION['role'] == 4){
+                            ?>
+                            <a href="charity_create_edit_delete/edit.php?index=<?= $i?>" class="btn btn-outline-dark" type="submit">
+                                Edit Charity
+                            </a>
+                            <a href="charity_create_edit_delete/delete.php?index=<?= $i?>" class="btn btn-outline-dark" type="submit">
+                                Delete Charity
+                            </a>
+                        <?php } ?>
                     </form>
                 </div>
             </div>

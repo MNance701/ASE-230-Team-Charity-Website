@@ -31,15 +31,24 @@ $query=$db->query('SELECT campaign.*,organization.OrganizationName FROM campaign
                         </li>
                     </ul>
                     <form class="d-flex">
-                        <a href="../../auth/signin.php" class="btn btn-outline-dark" type="submit">
-                            Sign In
-                        </a>
-                        <a href="../../auth/signout.php" class="btn btn-outline-dark" type="submit">
-                            Sign Out
-                        </a>
-                        <a href="create.php" class="btn btn-outline-dark" type="submit">
-                            Create Campaign
-                        </a>
+                        <?php
+                        if(!isset($_SESSION)){
+                        ?>
+                            <a href="../../auth/signin.php" class="btn btn-outline-dark" type="submit">
+                                Sign In
+                            </a>
+                        <?php
+                        }
+                        //If the user is an active user (role 1 or higher)
+                        if($_SESSION['role'] >0){
+                            ?>
+                            <a href="../../auth/signout.php" class="btn btn-outline-dark" type="submit">
+                                Sign Out
+                            </a>
+                            <a href="create.php" class="btn btn-outline-dark" type="submit">
+                                Create Campaign
+                            </a>
+                        <?php }?>
                     </form>
                 </div>
             </div>

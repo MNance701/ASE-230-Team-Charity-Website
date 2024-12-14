@@ -28,12 +28,17 @@ $campaign = $query->fetch();
                         </li>
                     </ul>
                     <form class="d-flex">
-                        <a href="edit.php?index=<?= $i?>" class="btn btn-outline-dark" type="submit">
-                            Edit Campaign
-                        </a>
-						<a href="delete.php?index=<?= $i?>" class="btn btn-outline-dark" type="submit">
-                            Delete Campaign
-                        </a>
+                        <?php
+                        //if the user is authorized for these functions
+                        if($_SESSION['role'] == 3 || $_SESSION['role'] == 4){
+                        ?>
+                            <a href="edit.php?index=<?= $i?>" class="btn btn-outline-dark" type="submit">
+                                Edit Campaign
+                            </a>
+                            <a href="delete.php?index=<?= $i?>" class="btn btn-outline-dark" type="submit">
+                                Delete Campaign
+                            </a>
+                        <?php } ?>
                     </form>
                 </div>
             </div>
