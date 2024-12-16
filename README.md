@@ -17,5 +17,6 @@ Database testuser: email=testuser@hotmail.com password=testingTheCharity2024
 Database admin login: email=amc.charity@hotmail.com password=Charity2024
 
 Final videos:
+https://youtu.be/3QfEMuHBJ7s - Project Description
 
 https://youtu.be/IRtwaSe7Zxc - Malachi
